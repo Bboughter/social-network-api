@@ -10,14 +10,11 @@ const {
     deleteReaction,
 } = require('../../controllers/thoughtController');
 
-const router = express.Router();
 
 router.route('/').get(getThoughts).post(createThought);
 
-router.route('/:id').get(getThoughtById).put(updateThought).delete(deleteThought);
+router.route('/:thoughtId').get(getThoughtById).put(updateThought).delete(deleteThought);
 
-router.route('/:thoughtId/reactions').post(createReaction);
-
-router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
+router.route('/:thoughtId/reactions').post(createReaction).delete(deleteReaction);
 
 module.exports = router;
